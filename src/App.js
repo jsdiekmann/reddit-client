@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import CardContainer from "./Components/Card/CardContainer";
-import SearchBar from "./Components/SearchBar/searchBar";
+import SearchBar from "./Components/SearchBar/SearchBar";
 
 const App = () => {
   const [error, setError] = useState("");
