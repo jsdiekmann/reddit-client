@@ -1,0 +1,12 @@
+.card {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    border: 2px solid black;
+    margin-top: 1rem;
+}
+
+.votes {
+    display: flex;
+    gap: 2rem;
+}
