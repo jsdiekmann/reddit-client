@@ -17,7 +17,6 @@ const Card = ({
   description,
   index,
   ups,
-  downs,
   permalink,
   url,
 }) => {
