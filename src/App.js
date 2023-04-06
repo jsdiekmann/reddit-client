@@ -7,49 +7,50 @@ const App = () => {
   const [error, setError] = useState("");
   const [term, setTerm] = useState("");
   const [searchTerm, setSearchTerm] = useState("cowboys");
+  const [filteredTerm, setFilteredTerm] = useState("");
+  const [data, setData] = useState([]);
 
   const handleTermChange = (event) => {
     let parsedTerm = event.target.value.replaceAll(/[" ", "'"]/g, "");
     setTerm(parsedTerm);
   };
 
+  
   const handleSubmit = () => {
     setSearchTerm(term);
+    setFilteredTerm("");
   };
 
-  const [data, setData] = useState([]);
+  const handleFilterChange = (event) => {
+    setFilteredTerm(event.target.value);
+  };
 
   useEffect(() => {
     loadListings();
   }, [searchTerm]);
 
   const loadListings = async () => {
-    
     let request;
 
     try {
       request = await fetch(`https://www.reddit.com/r/${searchTerm}.json`);
       setError(null);
     } catch (error) {
-      setError('That is not a valid subreddit');
+      setError("That is not a valid subreddit");
       return;
     }
-   
-    if(!request.ok) {
-      setError('That is not a valid subreddit');
-      return; 
-    };
+
+    if (!request.ok) {
+      setError("That is not a valid subreddit");
+      return;
+    }
 
     const listings = await request.json();
 
-    //console.log(listings.data);
-
-    if(listings.data.children.length === 0) {
-      setError('That subreddit does not contain any posts');
+    if (listings.data.children.length === 0) {
+      setError("That subreddit does not contain any posts");
       return;
-    };
-
-
+    }
 
     setData(
       listings.data.children.map((listing) => ({
@@ -61,7 +62,7 @@ const App = () => {
         url: listing.data.url,
         description: listing.data.selftext,
         ups: listing.data.ups,
-        downs: listing.data.downs
+        downs: listing.data.downs,
       }))
     );
   };
@@ -75,9 +76,10 @@ const App = () => {
         handleTermChange={handleTermChange}
         term={term}
         handleSubmit={handleSubmit}
+        handleFilterChange={handleFilterChange}
       />
       <h2>{error}</h2>
-      <CardContainer listings={data} />
+      <CardContainer listings={data} filteredTerm={filteredTerm} />
     </div>
   );
 };
