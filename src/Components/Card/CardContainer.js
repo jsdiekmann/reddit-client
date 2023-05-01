@@ -1,6 +1,9 @@
 import React from "react";
 import Card from "./Card";
 
+
+// Renders a component that contains the cards with the information from the Reddit JSON API. Will only allow the rendering of a card that passes the filter for the title and description attributes
+
 const CardContainer = ({ listings, filteredTerm }) => {
   
   return (

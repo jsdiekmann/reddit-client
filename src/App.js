@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import CardContainer from "./Components/Card/CardContainer";
 import SearchBar from "./Components/SearchBar/SearchBar";
+import { parser } from "./parser";
 
 const App = () => {
   const [error, setError] = useState("");
@@ -10,20 +11,29 @@ const App = () => {
   const [filteredTerm, setFilteredTerm] = useState("");
   const [data, setData] = useState([]);
 
-  const handleTermChange = (event) => {
-    let parsedTerm = event.target.value.replaceAll(/[" ", "'"]/g, "");
+
+  // Takes an inputted term, parses it and then updates state
+  
+  const handleTermChange = (newValue) => {
+    let parsedTerm = parser(newValue);
     setTerm(parsedTerm);
   };
 
   
+  // On button press, updates serach term to match previously inputted term and resets the filter
+
   const handleSubmit = () => {
     setSearchTerm(term);
     setFilteredTerm("");
   };
 
-  const handleFilterChange = (event) => {
-    setFilteredTerm(event.target.value);
+  // Updates filter for returned result based on key stroke
+
+  const handleFilterChange = (filterValue) => {
+    setFilteredTerm(filterValue);
   };
+
+  // Uses the searchTerm to make an API call to return a desired subreddit
 
   useEffect(() => {
     loadListings();
@@ -52,6 +62,8 @@ const App = () => {
       return;
     }
 
+    // Sets data which will be passed to Card Component to render the Cards
+
     setData(
       listings.data.children.map((listing) => ({
         title: listing.data.title,
@@ -74,7 +86,7 @@ const App = () => {
       </header>
       <SearchBar
         handleTermChange={handleTermChange}
-        term={term}
+        filteredTerm={filteredTerm}
         handleSubmit={handleSubmit}
         handleFilterChange={handleFilterChange}
       />

@@ -1,7 +1,9 @@
 import React from "react";
 import "./Card.css";
 
-const Link = (url) => {
+// Creates Link component that will open a new tab from a link that is part of our returned listing
+
+export const Link = (url) => {
   if (!!url) {
     return (
       <a href={url.url} target="_blank">
@@ -10,6 +12,8 @@ const Link = (url) => {
     );
   }
 };
+
+// Creates the structure of the individual posts in the subreddit
 
 const Card = ({
   title,
@@ -21,7 +25,7 @@ const Card = ({
   url,
 }) => {
   return (
-    <div className="card" key={index}>
+    <div className="card" key={index} data-testid="card" >
       <a href={`https://www.reddit.com${permalink}`} target="_blank">
         <h3>{title}</h3>
       </a>

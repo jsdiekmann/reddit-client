@@ -1,5 +1,5 @@
 .card {
-    display: grid;
+    display: flexbox;
     justify-content: center;
     justify-items: center;
     border: 2px solid black;
@@ -8,6 +8,5 @@
 }
 
 .votes {
-    display: flex;
     gap: 2rem;
 }
