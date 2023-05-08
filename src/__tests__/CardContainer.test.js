@@ -1,5 +1,4 @@
 import CardContainer from "../Components/Card/CardContainer";
-import Card from "../Components/Card/Card";
 import { render, screen } from "@testing-library/react";
 
 describe("CardContainer", () => {
@@ -30,7 +29,6 @@ describe("CardContainer", () => {
         render(<CardContainer listings={mockData} filteredTerm={""}/>)
         
         const mockArray = screen.getAllByTestId("card");
-        expect(mockArray).toHaveLength(2
-            );
+        expect(mockArray).toHaveLength(2);
     })
 })
