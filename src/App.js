@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import CardContainer from "./Components/Card/CardContainer";
-import SearchBar from "./Components/SearchBar/SearchBar";
-import { parser } from "./parser";
+import CardContainer from "./Components/Card/CardContainer.js";
+import SearchBar from "./Components/SearchBar/SearchBar.js";
+import { parser } from "./parser.js";
 
 const App = () => {
   const [error, setError] = useState("");
