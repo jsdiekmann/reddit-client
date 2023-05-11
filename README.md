@@ -5,9 +5,9 @@ This application allows users to search for subreddits and filter the posts with
 
 ## Technologies
 
-*React
-*HTML
-*CSS
+* React
+* HTML
+* CSS
 
 ## Features
 
