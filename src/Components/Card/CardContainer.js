@@ -14,6 +14,8 @@ const CardContainer = ({ listings, filteredTerm }) => {
         listing.description.toLowerCase().includes(filteredTerm.toLowerCase())
       ) {
         return <Card {...listing} key={index} />;
+      } else {
+        return null;
       }
     })
   );
