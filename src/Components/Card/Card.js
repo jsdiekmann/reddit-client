@@ -6,7 +6,7 @@ import "./Card.css";
 export const Link = (url) => {
   if (!!url) {
     return (
-      <a href={url.url} target="_blank">
+      <a href={url.url} target="_blank" rel="noreferrer">
         External Link
       </a>
     );
@@ -26,10 +26,10 @@ const Card = ({
 }) => {
   return (
     <div className="card" key={index} data-testid="card" >
-      <a href={`https://www.reddit.com${permalink}`} target="_blank">
+      <a href={`https://www.reddit.com${permalink}`} target="_blank" rel="noreferrer">
         <h3>{title}</h3>
       </a>
-      {src !== "self" && src !== "default" && <img src={src} />}
+      {src !== "self" && src !== "default" && <img src={src} alt="" />}
       <p>{description}</p>
       <div className="votes">
         <p>Ups: {ups}</p>
