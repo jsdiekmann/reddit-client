@@ -7,7 +7,7 @@ import { parser } from "./parser";
 const App = () => {
   const [error, setError] = useState("");
   const [term, setTerm] = useState("");
-  const [searchTerm, setSearchTerm] = useState("cowboys");
+  const [searchTerm, setSearchTerm] = useState("ufc");
   const [filteredTerm, setFilteredTerm] = useState("");
   const [data, setData] = useState([]);
 
