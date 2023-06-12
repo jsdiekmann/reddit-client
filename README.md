@@ -11,7 +11,7 @@ This application allows users to search for subreddits and filter the posts with
 
 ## Features
 
-* Renders posts from the r/cowboys subreddit
+* Renders posts from the r/ufc subreddit
 * Search subreddits with user input search bar
 * Filter posts by user input term
 * Clicking on title of post opens new tab redirecting to the reddit post
